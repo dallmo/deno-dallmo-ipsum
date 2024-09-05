@@ -10,6 +10,7 @@
  *  - deno : shuffle these items, keep them as array, return the array ; 
  */
 
+/////////////////////////////////////////
 import {
   parse_args,
 } from "../etc/deps.ts";
@@ -19,3 +20,17 @@ const num_of_words: number = flags.num;
 
 console.log("num_of_words: ", num_of_words );
 
+const cmd = new Deno.Command(
+  "../bin/get-word-list-total.zsh", {
+  args: [],
+  });
+
+// Collecting the output
+const { stdout, stderr } = await cmd.output();
+
+// Convert the Uint8Array to string
+const output = new TextDecoder().decode(stdout);
+const error = new TextDecoder().decode(stderr);
+
+console.log("Output:", output);
+console.log("Error:", error);

@@ -14,6 +14,7 @@
 
 import {
   parse_args,
+  dallmo_util_array,
 } from "../etc/deps.ts";
 
 const flags = parse_args( Deno.args );
@@ -21,4 +22,8 @@ const num_of_words: number = flags.num;
 
 console.log("num_of_words: ", num_of_words );
 
+const word_list_file: string = "../etc/latin-word.list";
+const content_string: string = await Deno.readTextFile( word_list_file );
+const word_list_array: string[] = content_string.split("\n");
 
+console.log( "word_list_array: ", word_list_array );
