@@ -6,13 +6,13 @@ import {
   dallmo_util_array,
 
 } from "./etc/deps.ts";
-import { rand_word_array } from "./mod.ts";
 ///////////////////////////////////////////////
 // import interfaces via "etc/interfaces.ts"
-/*
 import {
+
+  Random_Section_Option_Obj,
+
 } from "./etc/interfaces.ts";
-*/
 ///////////////////////////////////////////////
 /**
  * give a number N, generate an array with N random words.
@@ -84,32 +84,37 @@ async function gen_rand_word_paragraph( num: number ): Promise<string> {
  */
 function word_array_to_paragraph( word_array: string[] ): string {
 
-  /**
-   * design notes:
-   *  - sentence length : 5 - 20 words
-   *  
-   * 
-   *  - if the array is empty, return it;
-   *  - if the array.length >=1 && <=5, add "." at the end, return ;
-   *  - if the array.length >=6,  
-   * 
-   * 
-   * - pick an integer N between 5 to 20 ( sentence length ) ; 
-   * - pick among [0,1,2,3] for the number of commas to add ;
-   *    - with this number X, repeat X times on choosing the index position
-   *      sentence index starts : 0
-   *      sentence index ends : N  
-   *      after this process, the sentence index ends : N+X
-   *                          the position of full-stop of this sentence : N+X+1
-   * - repeat this process until the remaining word array is <= 20;
-   *  - i.e. if the remaining word array length is <= 20, take them all to add "." and ",";
-   */
+  const word_array_length: number = word_array.length;
+  
+  // this is the range of sentence lengths
+  const option_obj: Random_Section_Option_Obj = {
+    min: 5,
+    max: 10,
+  }; // option_obj
 
+  let output_paragraph: string = "";
+ 
+  let curr_break_index: number = 0;
+  const rand_sections: number[] = dallmo_util_math.random_sections( word_array_length, option_obj );
+        //console.log( rand_sections );
 
+        for( const sentence_break_index of rand_sections ){
+          curr_break_index += sentence_break_index;
 
-  const paragraph: string = word_array.join(" ").concat(".");
+          const curr_symbol: string = "."
+          word_array[ curr_break_index-1 ] += curr_symbol; 
 
-  return paragraph;
+          //console.log("current word_array : ", word_array );
+        }; // for
+
+  //console.log( rand_sections );
+  //console.log( word_array );
+
+  // add the final full-stop
+  output_paragraph = word_array.join(" ");
+  //output_paragraph.concat(".");
+
+  return output_paragraph;
 
 }; // function
 ///////////////////////////////////////////////
