@@ -58,6 +58,7 @@ async function gen_rand_word_array( num: number ): Promise<string[]> {
     return rand_word_array;
   
 }; // function
+const gen_array = gen_rand_word_array;
 ///////////////////////////////////////////////
 /**
  * give a number N to generated a paragraph with N words.
@@ -74,6 +75,7 @@ async function gen_rand_word_paragraph( num: number ): Promise<string> {
   return rand_word_paragraph;
 
 }; // function
+const gen_paragraph = gen_rand_word_paragraph;
 ///////////////////////////////////////////////
 /**
  * insert "." and "," to random positions in the word array
@@ -84,24 +86,43 @@ async function gen_rand_word_paragraph( num: number ): Promise<string> {
  */
 function word_array_to_paragraph( word_array: string[] ): string {
 
-  const word_array_length: number = word_array.length;
-  
+  // ---------------------------------------------------
+  // define some vars here
   // this is the range of sentence lengths
   const option_obj: Random_Section_Option_Obj = {
-    min: 5,
-    max: 10,
+    min: 3,
+    max: 8,
   }; // option_obj
+  
+  // the array of symbols to pick randomly between each section / sentence
+  // 2 commas here to make it appear in higher chance
+  const random_symbol_array: string[] = [".",",",",","?","!",";"," -"];
+  // ---------------------------------------------------
 
+  //
+  const word_array_length: number = word_array.length;
+  
   let output_paragraph: string = "";
- 
   let curr_break_index: number = 0;
   const rand_sections: number[] = dallmo_util_math.random_sections( word_array_length, option_obj );
         //console.log( rand_sections );
 
-        for( const sentence_break_index of rand_sections ){
-          curr_break_index += sentence_break_index;
+        for( let i=0; i<rand_sections.length; i++){
 
-          const curr_symbol: string = "."
+          // increment the break index, so that
+          // it will shift to the next section in the next loop
+          curr_break_index += rand_sections[i];
+
+          let curr_symbol: string;
+          // check if this is the last item
+          if( i == rand_sections.length-1 ){
+            // it must be full-stop
+            curr_symbol = ".";
+          }else{
+            // pick it randomly between an array of symbols
+            curr_symbol = dallmo_util_array.random_item(random_symbol_array);
+          }; // if else, check last item
+
           word_array[ curr_break_index-1 ] += curr_symbol; 
 
           //console.log("current word_array : ", word_array );
@@ -120,7 +141,7 @@ function word_array_to_paragraph( word_array: string[] ): string {
 ///////////////////////////////////////////////
 export {
 
-  gen_rand_word_array,
-  gen_rand_word_paragraph,
+  gen_array,
+  gen_paragraph,
 
 }; // export
