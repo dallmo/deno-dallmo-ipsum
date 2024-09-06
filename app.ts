@@ -21,11 +21,11 @@ import {
 /**
  * give a number N, generate an array with N random words.
  * 
- * @function gen_rand_word_array
+ * @function gen_array
  * @param {number} num - the number of words in the output array
  * @returns {Promise<string[]>}
  */
-async function gen_rand_word_array( num: number ): Promise<string[]> {
+function gen_array( num: number ): string[] {
 
   /**
    * approach 2
@@ -37,14 +37,10 @@ async function gen_rand_word_array( num: number ): Promise<string[]> {
    *  - deno : get the size of this array as N ;
    *  - deno : pick X num of intergers between 1..N, assume no repeat ;
    *  - deno : pick specific item from the word list array ;
-   *  - deno : shuffle these items, keep them as array, return the array ;
    */
   
     const words_to_gen: number = num ; 
   
-    //const word_list_file: string = "./etc/latin-word.list";
-    //const content_string: string = await Deno.readTextFile( word_list_file );
-    //const word_list_array: string[] = content_string.split("\n");
     const word_list_array: string[] = word_list_array_la;
   
     // the total number of words to choose from
@@ -63,24 +59,22 @@ async function gen_rand_word_array( num: number ): Promise<string[]> {
     return rand_word_array;
   
 }; // function
-const gen_array = gen_rand_word_array;
 ///////////////////////////////////////////////
 /**
  * give a number N to generated a paragraph with N words.
  * 
- * @function gen_rand_word_paragraph
+ * @function gen_paragraph
  * @param {number} num - the number of words to be generated for the output paragraph 
  * @returns {Promise<string>}
  */
-async function gen_rand_word_paragraph( num: number ): Promise<string> {
+async function gen_paragraph( num: number ): Promise<string> {
   
-  const rand_word_array: string[] = await gen_rand_word_array( num );
+  const rand_word_array: string[] = gen_array( num );
   const rand_word_paragraph: string = word_array_to_paragraph( rand_word_array );
 
   return rand_word_paragraph;
 
 }; // function
-const gen_paragraph = gen_rand_word_paragraph;
 ///////////////////////////////////////////////
 /**
  * insert "." and "," to random positions in the word array
