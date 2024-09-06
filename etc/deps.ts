@@ -15,10 +15,8 @@ export { assert } from "https://deno.land/std/assert/assert.ts";
 
 // supporting util from dallmo
 //export { dallmo_util_yaml } from "https://deno.land/x/dallmo_util_yaml/mod.ts";
-
-
-export * as dallmo_util_math from "https://deno.land/x/dallmo_util_math/mod.ts";
-export * as dallmo_util_array from "https://deno.land/x/dallmo_util_array/mod.ts";
+export * as dallmo_util_array from "jsr:@dallmo/util-array@^1.3.0";
+export * as dallmo_util_math  from "jsr:@dallmo/util-math@^1.2.0";
 
 // remote modules
 //export { parseArgs as parse_args } from "jsr:@std/cli/parse-args";

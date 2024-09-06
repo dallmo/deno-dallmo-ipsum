@@ -31,13 +31,21 @@ async function main( num: number ): Promise<string[]> {
  *  - deno : shuffle these items, keep them as array, return the array ;
  */
 
+  const words_to_gen: number = num ; 
+
   const word_list_file: string = "./etc/latin-word.list";
   const content_string: string = await Deno.readTextFile( word_list_file );
   const word_list_array: string[] = content_string.split("\n");
 
-  const total_num_of_words: number = word_list_array.length;
-  //      console.log( total_num_of_words );
+  // the total number of words to choose from
+  const word_list_total: number = word_list_array.length;
 
+  // the array of random index to pick from word_list_total
+  const rand_integer_array: number[] = dallmo_util_math.random_integer_array( words_to_gen, 1, word_list_total );
+
+  // pick the item from word_list_array per rand_integer_array
+  // no repeat assumed
+  
 
   return ["a"];
 
