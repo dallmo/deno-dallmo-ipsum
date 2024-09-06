@@ -7,7 +7,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 // deno standard library
 //export { walk } from "https://deno.land/std/fs/walk.ts";
-export { assert } from "https://deno.land/std/assert/assert.ts";
+export { assert } from "jsr:@std/assert@^1.0.4";
+
 //export { join as path_join } from "https://deno.land/std/path/join.ts";
 
 // for loading env vars

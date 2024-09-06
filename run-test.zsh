@@ -1,5 +1,5 @@
 #!/bin/zsh
 
-time deno run -A test-3.ts
+time deno run -A run-test.ts
 
 

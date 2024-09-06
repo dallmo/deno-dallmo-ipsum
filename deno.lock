@@ -6,7 +6,9 @@
       "jsr:@dallmo/util-math@^1.1.0": "jsr:@dallmo/util-math@1.2.0",
       "jsr:@dallmo/util-math@^1.2.0": "jsr:@dallmo/util-math@1.2.0",
       "jsr:@std/assert@^0.218.2": "jsr:@std/assert@0.218.2",
-      "jsr:@std/fmt@^0.218.2": "jsr:@std/fmt@0.218.2"
+      "jsr:@std/assert@^1.0.4": "jsr:@std/assert@1.0.4",
+      "jsr:@std/fmt@^0.218.2": "jsr:@std/fmt@0.218.2",
+      "jsr:@std/internal@^1.0.3": "jsr:@std/internal@1.0.3"
     },
     "jsr": {
       "@dallmo/util-array@1.3.0": {
@@ -25,16 +27,19 @@
           "jsr:@std/fmt@^0.218.2"
         ]
       },
+      "@std/assert@1.0.4": {
+        "integrity": "d4c767ea578e5bc09c15b6e503376003e5b2d1f4c0cdf08524a92101ff4d7b96",
+        "dependencies": [
+          "jsr:@std/internal@^1.0.3"
+        ]
+      },
       "@std/fmt@0.218.2": {
         "integrity": "99526449d2505aa758b6cbef81e7dd471d8b28ec0dcb1491d122b284c548788a"
+      },
+      "@std/internal@1.0.3": {
+        "integrity": "208e9b94a3d5649bd880e9ca38b885ab7651ab5b5303a56ed25de4755fb7b11e"
       }
     }
   },
-  "redirects": {
-    "https://deno.land/std/assert/assert.ts": "https://deno.land/std@0.224.0/assert/assert.ts"
-  },
-  "remote": {
-    "https://deno.land/std@0.224.0/assert/assert.ts": "09d30564c09de846855b7b071e62b5974b001bb72a4b797958fe0660e7849834",
-    "https://deno.land/std@0.224.0/assert/assertion_error.ts": "ba8752bd27ebc51f723702fac2f54d3e94447598f54264a6653d6413738a8917"
-  }
+  "remote": {}
 }
