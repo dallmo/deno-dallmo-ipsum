@@ -18,9 +18,8 @@ import {
 } from "../etc/deps.ts";
 
 const flags = parse_args( Deno.args );
-const num_of_words: number = flags.num;
+const num_of_words_to_gen: number = flags.num;
 
-console.log("num_of_words: ", num_of_words );
 
 const word_list_file: string = "../etc/latin-word.list";
 const content_string: string = await Deno.readTextFile( word_list_file );
