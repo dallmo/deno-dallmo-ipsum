@@ -14,6 +14,10 @@ import {
 
 } from "./etc/interfaces.ts";
 ///////////////////////////////////////////////
+import {
+  word_array as word_list_array_la // word list array of latin words
+} from "./var/word-la.list.ts";
+///////////////////////////////////////////////
 /**
  * give a number N, generate an array with N random words.
  * 
@@ -38,9 +42,10 @@ async function gen_rand_word_array( num: number ): Promise<string[]> {
   
     const words_to_gen: number = num ; 
   
-    const word_list_file: string = "./etc/latin-word.list";
-    const content_string: string = await Deno.readTextFile( word_list_file );
-    const word_list_array: string[] = content_string.split("\n");
+    //const word_list_file: string = "./etc/latin-word.list";
+    //const content_string: string = await Deno.readTextFile( word_list_file );
+    //const word_list_array: string[] = content_string.split("\n");
+    const word_list_array: string[] = word_list_array_la;
   
     // the total number of words to choose from
     const word_list_total: number = word_list_array.length;
