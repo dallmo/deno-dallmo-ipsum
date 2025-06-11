@@ -12,14 +12,8 @@
 
 
 # usage
-## running on deno, import via jsr
 
-1. in CLI, add the module with :
-```
-deno add @dallmo/util-ipsum
-```
-
-2. create `test-via-jsr.ts` ; 
+1. create `test-via-jsr.ts` with these contents :  
 
 ```
 import { 
@@ -42,16 +36,54 @@ const result2: string = await gen_paragraph( num );
       console.log( result2 );
 ```
 
-3. run the test file
+2. run the test file
 ```
 deno run test-via-jsr.ts
 ```
 
+
 # test
+
+( for reference only, test codes are mostly work in progress )
+
+to run test codes : 
+
+1. switch to the project root folder, i.e. `[root]/` ;
+2. run deno task scripts :
+- to test the local files : 
+  - run `deno task test` ;
+- to test with dependencies via jsr : 
+  - run `deno task test-jsr` ; 
+
+
+## notes on "import / deno add"
+in the sample code above, the module is imported via :
 ```
-test scripts to be updated.
+import { [method name] } from "jsr:@[module name]";
 ```
+
+in case the import is done with this instead : 
+```
+import { [method name] } from "@[module name]";
+```
+
+i.e. without the "jsr:" prefix, then the module has to be added with this command in CLI :
+```
+deno add jsr:@[module name]
+```
+
+if the module has been manually added in the CLI, import with the "jsr:" prefix inside the app is also ok.
+
+updates have therefore been made to add the "jsr:" prefix to both the sample codes above and the test file `test-via-jsr.ts` for simple copy-n-paste.
+
 
 [comments]: ----------------------------------
 [link-1]: https://deno.land/x/dallmo_ipsum
 [link-2]: https://jsr.io/@dallmo/ipsum
+
+
+# updates
+## 2025-06-11
+- remove custom steps in github workflow which make changes to etc/deps.ts ;
+- archived deno.land related files and focus only on jsr ; 
+- add notes above on the usage of "jsr:" prefix ; 

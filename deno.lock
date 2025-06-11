@@ -3,9 +3,11 @@
   "specifiers": {
     "jsr:@dallmo/util-array@^1.3.0": "1.3.0",
     "jsr:@dallmo/util-array@^1.4.0": "1.4.0",
+    "jsr:@dallmo/util-array@^1.4.1": "1.4.1",
     "jsr:@dallmo/util-math@^1.1.0": "1.2.0",
     "jsr:@dallmo/util-math@^1.2.0": "1.2.0",
     "jsr:@dallmo/util-math@^1.3.0": "1.3.0",
+    "jsr:@dallmo/util-math@^1.3.1": "1.3.1",
     "jsr:@std/assert@^1.0.13": "1.0.13",
     "jsr:@std/assert@^1.0.4": "1.0.4",
     "jsr:@std/assert@~0.218.2": "0.218.2",
@@ -28,11 +30,21 @@
         "jsr:@std/assert@^1.0.13"
       ]
     },
+    "@dallmo/util-array@1.4.1": {
+      "integrity": "47600b8720147e7f3ccb25ae7739b955864c0fba5f8f87d9b375cc2c48bdc8b6",
+      "dependencies": [
+        "jsr:@dallmo/util-math@^1.3.0",
+        "jsr:@std/assert@^1.0.13"
+      ]
+    },
     "@dallmo/util-math@1.2.0": {
       "integrity": "ae157a64acef93788ef064890db1cea652920a58eb8afe60011d53e3552a62dc"
     },
     "@dallmo/util-math@1.3.0": {
       "integrity": "3d8e57406aed137810c1264faee8235fde435268c96eb765cc27fab8b3fd0f8d"
+    },
+    "@dallmo/util-math@1.3.1": {
+      "integrity": "332db59290e9c056f62009adb6817d60775491c4a4438482d3d6284223c1d0e4"
     },
     "@std/assert@0.218.2": {
       "integrity": "7f0a5a1a8cf86607cd6c2c030584096e1ffad27fc9271429a8cb48cfbdee5eaf",
